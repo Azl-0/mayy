@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Valentín</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f2;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            width: 60%;
+            max-width: 800px;
+            box-shadow: 0px 0px 15px #ff66b2;
+            text-align: center;
+            margin: 20px auto;
+            position: relative;
+        }
+        .narrow {
+            width: 50%;
+        }
+        .message {
+            font-size: 22px;
+            color: #ff1493;
+            font-weight: bold;
+        }
+        .typing-effect {
+            display: inline-block;
+            border-right: 3px solid;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 2s steps(30, end), blink .75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: black; }
+        }
+        .button {
+            padding: 12px 24px;
+            font-size: 20px;
+            color: white;
+            background-color: #ff1493;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .hidden {
+            display: none;
+        }
+        .no-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            background-color: #ff4d4d;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: absolute;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="firstMessage">
+        <p class="message">May,¿Quieres ser mi San Valentín?❤</p>
+        <button class="button" onclick="showSecondMessage()">¡Sí! 💕</button>
+        <button class="no-button" id="noButton" onmouseover="moveNoButton()">No 😢</button>
+    </div>
+
+    <div class="container hidden" id="secondMessage">
+        <p class="message typing-effect">Gracias por aceptar mi amor, te amo muchísimo💕</p>
+        <br>
+        <button class="button" onclick="showFinalMessage()">¡Ábreme!</button>
+    </div>
+
+    <div class="container narrow hidden" id="finalMessage">
+        <h2 style="color: #ff1493;">¿Quieres ser mi San Valentín?🌷</h2>
+        <p>Dije que te lo pediría de otra forma, no sé si te guste así, espero que sí, sino ya estaba pensando en escribirte un PDF.</p>
+        <p>Me encantaría poder hacerlo en persona, llevarte algo que te guste y decirte más cosas en persona, como recordarte lo mucho que te amo, lo hermosa que eres, lo mucho que me encantas.</p>
+        <p>Sabes que estoy para ti, eres el amor de mi vida, la única que me hizo amar de esta forma.💕</p>
+        <p>Te extraño mucho, mi princesa hermosa.❤️</p>
+        <img src="https://i.pinimg.com/originals/1b/b7/8a/1bb78aff69f722cd8424eaefae53cba6.gif" alt="Hello Kitty con corazones">
+    </div>
+
+    <script>
+        function showSecondMessage() {
+            document.getElementById('firstMessage').classList.add('hidden');
+            document.getElementById('secondMessage').classList.remove('hidden');
+        }
+        function showFinalMessage() {
+            document.getElementById('secondMessage').classList.add('hidden');
+            document.getElementById('finalMessage').classList.remove('hidden');
+        }
+        function moveNoButton() {
+            let button = document.getElementById("noButton");
+            // Genera un desplazamiento aleatorio entre -30 y 30 píxeles
+            let offsetX = (Math.random() - 0.5) * 60;
+            let offsetY = (Math.random() - 0.5) * 60;
+            button.style.left = offsetX + "px";
+            button.style.top = offsetY + "px";
+        }
+    </script>
+</body>
+</html>
